@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://www.voyageflights.com',
-  base: '/blog',
+  site: 'https://blog.voyageflights.com',
 });
