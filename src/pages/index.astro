@@ -1,17 +1,136 @@
 ---
-
+import { getCollection } from 'astro:content';
+const posts = await getCollection('posts').catch(() => []);
+const allPosts = [
+  {
+    slug: 'what-is-a-multi-city-flight',
+    data: {
+      title: 'What Is a Multi-City Flight? A Complete Guide for First-Timers',
+      description: 'Everything you need to know about multi-city flights: what they are, how they differ from round trips, when they make sense, and how to book them.',
+      date: 'May 2026',
+      tag: 'Guide',
+    }
+  }
+];
 ---
-
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | VoyageFlights</title>
+  <meta name="description" content="Travel guides, flight tips, and multi-city itinerary advice from VoyageFlights." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy: #0a2342; --red: #c0392b; --offwhite: #f7f8fa; --border: #d8dde6; --text: #1a1a2e; --muted: #5a6275; }
+    body { font-family: 'DM Sans','Helvetica Neue',sans-serif; background: var(--offwhite); color: var(--text); }
+
+    /* Header（BlogPost.astroと同じ） */
+    .site-header { background: var(--navy); height: 80px; display: flex; align-items: center; padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
+    .hdr-inner { width: 100%; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; text-decoration: none; }
+    .tagline-wrap { display: flex; align-items: center; margin-left: 4px; }
+    .tagline-divider { width: 1px; height: 36px; background: rgba(255,255,255,0.2); margin-right: 14px; }
+    .tagline-main { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.6); letter-spacing: 1.5px; text-transform: uppercase; display: block; }
+    .tagline-sub { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.85); letter-spacing: 0.5px; font-style: italic; display: block; margin-top: 3px; text-decoration: none; }
+    .back-btn { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.65); text-decoration: none; padding: 6px 14px; border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; }
+    .back-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+    /* Hero */
+    .hero { background: var(--navy); padding: 48px 24px 40px; text-align: center; }
+    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(24px, 4vw, 36px); color: #fff; font-weight: 700; margin-bottom: 10px; }
+    .hero p { color: rgba(255,255,255,0.6); font-size: 15px; }
+
+    /* Posts */
+    .posts-wrap { max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; }
+    .posts-grid { display: grid; gap: 20px; }
+    .post-card { background: #fff; border-radius: 12px; padding: 28px; border: 1.5px solid var(--border); text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s, transform 0.2s; }
+    .post-card:hover { box-shadow: 0 8px 24px rgba(10,35,66,0.1); transform: translateY(-2px); }
+    .post-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .post-tag { background: var(--navy); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 4px; }
+    .post-date { font-size: 12px; color: var(--muted); }
+    .post-title { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 700; color: var(--navy); line-height: 1.3; margin-bottom: 10px; }
+    .post-desc { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
+    .post-link { font-size: 13px; font-weight: 700; color: var(--red); letter-spacing: 0.3px; }
+
+    /* Footer */
+    .site-footer { background: var(--navy); color: rgba(255,255,255,0.45); text-align: center; padding: 24px 20px; font-size: 12px; }
+    .site-footer a { color: rgba(255,255,255,0.55); text-decoration: none; margin: 0 10px; }
+    .site-footer a:hover { color: #fff; }
+    .footer-links { margin-bottom: 8px; }
+
+    @media (max-width: 600px) {
+      .site-header { height: 56px; padding: 0 16px; }
+      .tagline-wrap { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="hdr-inner">
+    <a href="https://www.voyageflights.com" class="logo">
+      <svg width="220" height="64" viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg">
+        <style>.lm{font-family:'DM Sans','Helvetica Neue',sans-serif;font-size:58px;font-weight:700;fill:#fff;letter-spacing:-1px}.lr{fill:#e74c3c}</style>
+        <text x="118" y="130" class="lm">Voyage<tspan class="lr">Flights</tspan></text>
+        <circle cx="80" cy="110" r="9" fill="rgba(255,255,255,0.12)"/><circle cx="80" cy="110" r="5" fill="rgba(255,255,255,0.65)"/>
+        <circle cx="215" cy="70" r="9" fill="rgba(255,255,255,0.12)"/><circle cx="215" cy="70" r="5" fill="rgba(255,255,255,0.65)"/>
+        <circle cx="380" cy="96" r="9" fill="rgba(231,76,60,0.25)"/><circle cx="380" cy="96" r="5" fill="#e74c3c"/>
+        <path d="M85 108 Q150 64 212 72" stroke="rgba(255,255,255,0.55)" stroke-width="2.5" fill="none" stroke-dasharray="5 4"/>
+        <path d="M219 70 Q300 58 375 95" stroke="rgba(231,76,60,0.85)" stroke-width="2.5" fill="none" stroke-dasharray="5 4"/>
+        <g transform="translate(40, 84) rotate(-28)">
+          <ellipse cx="22" cy="13" rx="20" ry="6" fill="white"/>
+          <path d="M16 13 L2 25 L9 25 L24 16Z" fill="white"/>
+          <path d="M16 13 L2 1 L9 1 L24 10Z" fill="rgba(255,255,255,0.65)"/>
+          <path d="M36 13 L43 7 L41 13Z" fill="#e74c3c"/>
+          <path d="M36 13 L43 19 L41 13Z" fill="rgba(255,255,255,0.4)"/>
+        </g>
+      </svg>
+      <div class="tagline-wrap">
+        <div class="tagline-divider"></div>
+        <div>
+          <span class="tagline-main">Multi-city Flight Planner</span>
+          <a href="https://www.voyageflights.com/about" class="tagline-sub">Search flights. Book direct.</a>
+        </div>
+      </div>
+    </a>
+    <a href="https://www.voyageflights.com" class="back-btn">← Back to search</a>
+  </div>
+</header>
+
+<div class="hero">
+  <h1>VoyageFlights Blog</h1>
+  <p>Travel guides, flight tips, and multi-city itinerary advice</p>
+</div>
+
+<main class="posts-wrap">
+  <div class="posts-grid">
+    {allPosts.map(post => (
+      <a href={`/blog/posts/${post.slug}`} class="post-card">
+        <div class="post-meta">
+          <span class="post-tag">{post.data.tag}</span>
+          <span class="post-date">{post.data.date}</span>
+        </div>
+        <div class="post-title">{post.data.title}</div>
+        <div class="post-desc">{post.data.description}</div>
+        <span class="post-link">Read article →</span>
+      </a>
+    ))}
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="https://www.voyageflights.com">Home</a>
+    <a href="/blog">Blog</a>
+    <a href="https://www.voyageflights.com/about">About</a>
+    <a href="https://www.voyageflights.com/privacy">Privacy Policy</a>
+    <a href="https://www.voyageflights.com/terms">Terms of Service</a>
+  </div>
+  <div>© {new Date().getFullYear()} VoyageFlights · Flight data via Google Flights · voyageflights.com</div>
+</footer>
+
+</body>
 </html>

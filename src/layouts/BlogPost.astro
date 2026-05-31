@@ -1,0 +1,182 @@
+---
+const { frontmatter } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{frontmatter.title} | VoyageFlights Blog</title>
+  <meta name="description" content={frontmatter.description} />
+  <meta property="og:title" content={`${frontmatter.title} | VoyageFlights`} />
+  <meta property="og:description" content={frontmatter.description} />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0a2342; --red: #c0392b; --white: #ffffff;
+      --offwhite: #f7f8fa; --border: #d8dde6;
+      --text: #1a1a2e; --muted: #5a6275;
+    }
+    body { font-family: 'DM Sans','Helvetica Neue',sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.7; }
+
+    /* Header */
+    .site-header { background: var(--navy); height: 80px; display: flex; align-items: center; padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
+    .hdr-inner { width: 100%; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; text-decoration: none; }
+    .logo svg { display: block; }
+    .tagline-wrap { display: flex; align-items: center; margin-left: 4px; }
+    .tagline-divider { width: 1px; height: 36px; background: rgba(255,255,255,0.2); margin-right: 14px; }
+    .tagline-main { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.6); letter-spacing: 1.5px; text-transform: uppercase; display: block; }
+    .tagline-sub { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.85); letter-spacing: 0.5px; font-style: italic; display: block; margin-top: 3px; text-decoration: none; }
+    .back-btn { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.65); text-decoration: none; padding: 6px 14px; border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; white-space: nowrap; }
+    .back-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+    /* Layout */
+    .page-wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    /* Breadcrumb */
+    .breadcrumb { font-size: 12px; color: var(--muted); margin-bottom: 28px; display: flex; align-items: center; gap: 6px; }
+    .breadcrumb a { color: var(--navy); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* Meta */
+    .meta { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .tag { background: var(--navy); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 4px; }
+    .date { font-size: 12px; color: var(--muted); }
+
+    /* Title */
+    .article-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 5vw, 38px); font-weight: 700; color: var(--navy); line-height: 1.25; margin-bottom: 16px; }
+    .article-desc { font-size: 17px; color: var(--muted); line-height: 1.65; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1.5px solid var(--border); }
+
+    /* Body */
+    .body h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; font-weight: 700; color: var(--navy); margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1.5px solid var(--border); }
+    .body h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin: 28px 0 10px; }
+    .body p { font-size: 16px; line-height: 1.8; color: var(--text); margin-bottom: 18px; }
+    .body strong { color: var(--navy); }
+    .body em { color: var(--muted); }
+    .body ul, .body ol { padding-left: 22px; margin-bottom: 18px; }
+    .body li { font-size: 16px; line-height: 1.75; margin-bottom: 8px; }
+    .body a { color: var(--navy); font-weight: 600; text-decoration: underline; text-decoration-color: rgba(10,35,66,0.3); text-underline-offset: 3px; }
+    .body a:hover { text-decoration-color: var(--navy); }
+    .body hr { border: none; border-top: 1.5px solid var(--border); margin: 36px 0; }
+    .body blockquote { border-left: 3px solid var(--red); padding: 12px 20px; margin: 24px 0; background: #fff; border-radius: 0 8px 8px 0; font-style: italic; color: var(--muted); }
+    .body table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+    .body th { background: var(--navy); color: #fff; padding: 10px 14px; text-align: left; font-weight: 600; font-size: 13px; }
+    .body td { padding: 10px 14px; border-bottom: 1px solid var(--border); background: #fff; }
+    .body tr:last-child td { border-bottom: none; }
+    .body tr:hover td { background: var(--offwhite); }
+
+    /* CTA */
+    .cta { background: var(--navy); border-radius: 12px; padding: 32px 28px; text-align: center; margin-top: 48px; }
+    .cta p { color: rgba(255,255,255,0.75); font-size: 15px; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: var(--red); color: #fff; font-weight: 700; font-size: 14px; padding: 12px 28px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; }
+    .cta-btn:hover { opacity: 0.85; }
+
+    /* Related */
+    .related { margin-top: 48px; padding-top: 32px; border-top: 1.5px solid var(--border); }
+    .related h3 { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .related ul { list-style: none; padding: 0; }
+    .related li { margin-bottom: 10px; }
+    .related a { color: var(--navy); font-size: 15px; font-weight: 500; text-decoration: none; }
+    .related a:hover { text-decoration: underline; }
+
+    /* Footer */
+    .site-footer { background: var(--navy); color: rgba(255,255,255,0.45); text-align: center; padding: 24px 20px; font-size: 12px; letter-spacing: 0.3px; }
+    .site-footer a { color: rgba(255,255,255,0.55); text-decoration: none; margin: 0 10px; }
+    .site-footer a:hover { color: #fff; }
+    .footer-links { margin-bottom: 8px; }
+
+    @media (max-width: 600px) {
+      .site-header { height: 56px; padding: 0 16px; }
+      .tagline-wrap { display: none; }
+      .page-wrap { padding: 28px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="hdr-inner">
+    <a href="https://www.voyageflights.com" class="logo">
+      <svg width="220" height="64" viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg">
+        <style>.lm{font-family:'DM Sans','Helvetica Neue',sans-serif;font-size:58px;font-weight:700;fill:#fff;letter-spacing:-1px}.lr{fill:#e74c3c}</style>
+        <text x="118" y="130" class="lm">Voyage<tspan class="lr">Flights</tspan></text>
+        <circle cx="80" cy="110" r="9" fill="rgba(255,255,255,0.12)"/><circle cx="80" cy="110" r="5" fill="rgba(255,255,255,0.65)"/>
+        <circle cx="215" cy="70" r="9" fill="rgba(255,255,255,0.12)"/><circle cx="215" cy="70" r="5" fill="rgba(255,255,255,0.65)"/>
+        <circle cx="380" cy="96" r="9" fill="rgba(231,76,60,0.25)"/><circle cx="380" cy="96" r="5" fill="#e74c3c"/>
+        <path d="M85 108 Q150 64 212 72" stroke="rgba(255,255,255,0.55)" stroke-width="2.5" fill="none" stroke-dasharray="5 4"/>
+        <path d="M219 70 Q300 58 375 95" stroke="rgba(231,76,60,0.85)" stroke-width="2.5" fill="none" stroke-dasharray="5 4"/>
+        <g transform="translate(40, 84) rotate(-28)">
+          <ellipse cx="22" cy="13" rx="20" ry="6" fill="white"/>
+          <path d="M16 13 L2 25 L9 25 L24 16Z" fill="white"/>
+          <path d="M16 13 L2 1 L9 1 L24 10Z" fill="rgba(255,255,255,0.65)"/>
+          <path d="M36 13 L43 7 L41 13Z" fill="#e74c3c"/>
+          <path d="M36 13 L43 19 L41 13Z" fill="rgba(255,255,255,0.4)"/>
+        </g>
+      </svg>
+      <div class="tagline-wrap">
+        <div class="tagline-divider"></div>
+        <div>
+          <span class="tagline-main">Multi-city Flight Planner</span>
+          <a href="https://www.voyageflights.com/about" class="tagline-sub">Search flights. Book direct.</a>
+        </div>
+      </div>
+    </a>
+    <a href="https://www.voyageflights.com" class="back-btn">← Back to search</a>
+  </div>
+</header>
+
+<main class="page-wrap">
+  <nav class="breadcrumb">
+    <a href="https://www.voyageflights.com">Home</a>
+    <span>›</span>
+    <a href="/blog">Blog</a>
+    <span>›</span>
+    <span>{frontmatter.title}</span>
+  </nav>
+
+  <div class="meta">
+    <span class="tag">{frontmatter.tag ?? 'Guide'}</span>
+    <span class="date">{frontmatter.date}</span>
+  </div>
+
+  <h1 class="article-title">{frontmatter.title}</h1>
+  <p class="article-desc">{frontmatter.description}</p>
+
+  <div class="body">
+    <slot />
+  </div>
+
+  <div class="cta">
+    <p>Ready to plan your multi-city trip? Search and compare flights across multiple destinations — all in one screen.</p>
+    <a href="https://www.voyageflights.com" class="cta-btn">Start planning on VoyageFlights →</a>
+  </div>
+
+  {frontmatter.related && (
+    <div class="related">
+      <h3>Related Articles</h3>
+      <ul>
+        {frontmatter.related.map((r: any) => (
+          <li><a href={r.url}>› {r.title}</a></li>
+        ))}
+      </ul>
+    </div>
+  )}
+</main>
+
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="https://www.voyageflights.com">Home</a>
+    <a href="/blog">Blog</a>
+    <a href="https://www.voyageflights.com/about">About</a>
+    <a href="https://www.voyageflights.com/privacy">Privacy Policy</a>
+    <a href="https://www.voyageflights.com/terms">Terms of Service</a>
+  </div>
+  <div>© {new Date().getFullYear()} VoyageFlights · Flight data via Google Flights · voyageflights.com</div>
+</footer>
+
+</body>
+</html>
