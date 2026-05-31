@@ -108,7 +108,7 @@ const allPosts = [
 <main class="posts-wrap">
   <div class="posts-grid">
     {allPosts.map(post => (
-      <a href={`/blog/posts/${post.slug}`} class="post-card">
+      <a href={`/posts/${post.slug}`} class="post-card">
         <div class="post-meta">
           <span class="post-tag">{post.data.tag}</span>
           <span class="post-date">{post.data.date}</span>
@@ -124,7 +124,7 @@ const allPosts = [
 <footer class="site-footer">
   <div class="footer-links">
     <a href="https://www.voyageflights.com">Home</a>
-    <a href="/blog">Blog</a>
+    <a href="/">Blog</a>
     <a href="https://www.voyageflights.com/about">About</a>
     <a href="https://www.voyageflights.com/privacy">Privacy Policy</a>
     <a href="https://www.voyageflights.com/terms">Terms of Service</a>
