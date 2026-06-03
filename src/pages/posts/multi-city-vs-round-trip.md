@@ -175,7 +175,3 @@ The best travellers don't default to one type of ticket. They run the numbers, c
 
 ---
 
-*Related articles:*
-- *What Is a Multi-City Flight? A Complete Guide for First-Timers*
-- *Minimum Layover Times at the World's Busiest Airports*
-- *How to Plan a Multi-City Trip Without Losing Your Mind*

@@ -175,8 +175,3 @@ Whether you're a first-time international traveler or a seasoned explorer planni
 **Ready to start planning?** Use [VoyageFlights](https://www.voyageflights.com) to search and compare multi-city flight options — and make sure your layovers actually work before you book.
 
 ---
-
-*Related articles:*
-- *Multi-City vs Round Trip: Which One Saves You More Money?*
-- *Minimum Layover Times at the World's Busiest Airports*
-- *Open-Jaw Flights Explained: How to Use Them Smartly*
