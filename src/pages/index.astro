@@ -143,5 +143,10 @@ const allPosts = Object.entries(postFiles)
   <div>© {new Date().getFullYear()} VoyageFlights · Flight data via Google Flights · voyageflights.com</div>
 </footer>
 
+<script>
+  import { inject } from '@vercel/analytics';
+  inject();
+</script>
+
 </body>
 </html>
