@@ -1,5 +1,17 @@
 ---
 const { frontmatter } = Astro.props;
+
+// 全記事を自動取得して現在の記事以外をRelatedとして表示
+const allFiles = import.meta.glob('../pages/posts/*.md', { eager: true });
+const relatedPosts = Object.entries(allFiles)
+  .map(([path, post]: [string, any]) => ({
+    slug: path.replace('../pages/posts/', '').replace('.md', ''),
+    title: post.frontmatter.title,
+    tag: post.frontmatter.tag,
+    date: post.frontmatter.date,
+  }))
+  .filter(p => p.slug !== frontmatter.slug)
+  .slice(0, 3); // 最大3件表示
 ---
 <!doctype html>
 <html lang="en">
@@ -11,8 +23,9 @@ const { frontmatter } = Astro.props;
   <meta property="og:title" content={`${frontmatter.title} | VoyageFlights`} />
   <meta property="og:description" content={frontmatter.description} />
   <meta property="og:type" content="article" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
-  <link rel="apple-touch-icon" href="/favicon.svg?v=2" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+  <link rel="shortcut icon" href="/favicon.svg?v=3" />
+  <link rel="apple-touch-icon" href="/favicon.svg?v=3" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
   <style>
@@ -157,12 +170,12 @@ const { frontmatter } = Astro.props;
     <a href="https://www.voyageflights.com" class="cta-btn">Start planning on VoyageFlights →</a>
   </div>
 
-  {frontmatter.related && (
+  {relatedPosts.length > 0 && (
     <div class="related">
       <h3>Related Articles</h3>
       <ul>
-        {frontmatter.related.map((r: any) => (
-          <li><a href={r.url}>› {r.title}</a></li>
+        {relatedPosts.map(r => (
+          <li><a href={`/posts/${r.slug}`}>› {r.title}</a></li>
         ))}
       </ul>
     </div>
