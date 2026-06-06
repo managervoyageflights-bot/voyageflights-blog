@@ -7,13 +7,6 @@ tag: "Guide"
 slug: "how-to-plan-a-multi-city-trip"
 ---
 
----
-title: "How to Plan a Multi-City Trip Without Losing Your Mind"
-date: "June 2026"
-description: "Multi-city travel can feel overwhelming to plan. Here's a clear, step-by-step framework for building a smooth multi-destination itinerary — without the stress."
-slug: "how-to-plan-a-multi-city-trip"
----
-
 # How to Plan a Multi-City Trip Without Losing Your Mind
 
 Multi-city travel is one of the most rewarding ways to explore the world. Instead of spending your whole holiday in one place, you get to experience multiple cities, cultures, and landscapes in a single trip.
