@@ -1,7 +1,9 @@
 ---
+layout: ../../layouts/BlogPost.astro
 title: "The Best Multi-City Flight Routes in Europe"
 date: "June 2026"
 description: "Discover the best multi-city flight routes across Europe — from classic city-break combinations to lesser-known itineraries that offer outstanding value."
+Tag: "Guide"
 slug: "best-multi-city-flight-routes-europe"
 cover_image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1200&auto=format&fit=crop"
 cover_image_alt: "Aerial view of European city with river and bridges"
