@@ -84,6 +84,15 @@ const relatedPosts = Object.entries(allFiles)
     .body tr:last-child td { border-bottom: none; }
     .body tr:hover td { background: var(--offwhite); }
 
+    /* Cover image */
+    .cover-image-wrap { margin-bottom: 32px; border-radius: 10px; overflow: hidden; }
+    .cover-image-wrap img { width: 100%; height: 280px; object-fit: cover; display: block; }
+    .cover-credit { font-size: 11px; color: var(--muted); text-align: right; margin-top: 4px; }
+
+    /* Body images */
+    .body img { width: 100%; max-height: 320px; object-fit: cover; border-radius: 8px; margin: 20px 0 4px; display: block; }
+    .body img + em { font-size: 11px; color: var(--muted); display: block; margin-bottom: 16px; }
+
     /* CTA */
     .cta { background: var(--navy); border-radius: 12px; padding: 32px 28px; text-align: center; margin-top: 48px; }
     .cta p { color: rgba(255,255,255,0.75); font-size: 15px; margin-bottom: 16px; }
@@ -152,6 +161,15 @@ const relatedPosts = Object.entries(allFiles)
     <span>›</span>
     <span>{frontmatter.title}</span>
   </nav>
+
+  {frontmatter.cover_image && (
+    <div class="cover-image-wrap">
+      <img src={frontmatter.cover_image} alt={frontmatter.cover_image_alt ?? frontmatter.title} />
+      {frontmatter.cover_image_credit && (
+        <p class="cover-credit">{frontmatter.cover_image_credit}</p>
+      )}
+    </div>
+  )}
 
   <div class="meta">
     <span class="tag">{frontmatter.tag ?? 'Guide'}</span>
