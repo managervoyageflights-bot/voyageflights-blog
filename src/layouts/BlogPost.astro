@@ -95,12 +95,11 @@ const relatedPosts = Object.entries(allFiles)
     .body figure img {
       width: 100% !important;
       max-width: 100% !important;
-      max-height: 320px !important;
+      height: 280px !important;
       object-fit: cover !important;
       border-radius: 8px;
       margin: 20px 0 4px;
       display: block;
-      height: auto;
     }
     .body img + em { font-size: 11px; color: var(--muted); display: block; margin-bottom: 16px; }
 
@@ -227,5 +226,16 @@ const relatedPosts = Object.entries(allFiles)
   inject();
 </script>
 
+<script>
+  // 本文中の画像すべてにインラインスタイルを直接適用
+  document.querySelectorAll('.body img').forEach(img => {
+    img.style.width = '100%';
+    img.style.height = '280px';
+    img.style.objectFit = 'cover';
+    img.style.borderRadius = '8px';
+    img.style.margin = '20px 0 4px';
+    img.style.display = 'block';
+  });
+</script>
 </body>
 </html>
