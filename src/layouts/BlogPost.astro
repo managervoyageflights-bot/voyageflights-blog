@@ -84,6 +84,26 @@ const relatedPosts = Object.entries(allFiles)
     .body tr:last-child td { border-bottom: none; }
     .body tr:hover td { background: var(--offwhite); }
 
+    /* 画像サイズ制御 */
+    .body img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 24px auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .body figure {
+      margin: 24px 0;
+      text-align: center;
+    }
+    .body figcaption {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+      font-style: italic;
+    }
+
     /* CTA */
     .cta { background: var(--navy); border-radius: 12px; padding: 32px 28px; text-align: center; margin-top: 48px; }
     .cta p { color: rgba(255,255,255,0.75); font-size: 15px; margin-bottom: 16px; }
