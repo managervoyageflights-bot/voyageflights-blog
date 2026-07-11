@@ -23,6 +23,7 @@ const relatedPosts = Object.entries(allFiles)
   <meta property="og:title" content={`${frontmatter.title} | VoyageFlights`} />
   <meta property="og:description" content={frontmatter.description} />
   <meta property="og:type" content="article" />
+  {frontmatter.cover_image && <meta property="og:image" content={frontmatter.cover_image} />}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
   <link rel="shortcut icon" href="/favicon.svg?v=3" />
   <link rel="apple-touch-icon" href="/favicon.svg?v=3" />
@@ -37,7 +38,6 @@ const relatedPosts = Object.entries(allFiles)
     }
     body { font-family: 'DM Sans','Helvetica Neue',sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.7; }
 
-    /* Header */
     .site-header { background: var(--navy); height: 80px; display: flex; align-items: center; padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
     .hdr-inner { width: 100%; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
     .logo { display: flex; align-items: center; text-decoration: none; }
@@ -49,24 +49,30 @@ const relatedPosts = Object.entries(allFiles)
     .back-btn { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.65); text-decoration: none; padding: 6px 14px; border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; white-space: nowrap; }
     .back-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
 
-    /* Layout */
-    .page-wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
+    .cover-wrap { max-width: 900px; margin: 0 auto; padding: 32px 24px 0; }
+    .cover-wrap img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+      box-shadow: 0 4px 20px rgba(10,35,66,0.12);
+    }
+    .cover-credit { font-size: 11px; color: var(--muted); text-align: right; margin-top: 6px; }
 
-    /* Breadcrumb */
+    .page-wrap { max-width: 760px; margin: 0 auto; padding: 32px 24px 80px; }
+
     .breadcrumb { font-size: 12px; color: var(--muted); margin-bottom: 28px; display: flex; align-items: center; gap: 6px; }
     .breadcrumb a { color: var(--navy); text-decoration: none; }
     .breadcrumb a:hover { text-decoration: underline; }
 
-    /* Meta */
     .meta { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .tag { background: var(--navy); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 4px; }
     .date { font-size: 12px; color: var(--muted); }
 
-    /* Title */
     .article-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 5vw, 38px); font-weight: 700; color: var(--navy); line-height: 1.25; margin-bottom: 16px; }
     .article-desc { font-size: 17px; color: var(--muted); line-height: 1.65; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1.5px solid var(--border); }
 
-    /* Body */
     .body h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; font-weight: 700; color: var(--navy); margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1.5px solid var(--border); }
     .body h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin: 28px 0 10px; }
     .body p { font-size: 16px; line-height: 1.8; color: var(--text); margin-bottom: 18px; }
@@ -84,34 +90,24 @@ const relatedPosts = Object.entries(allFiles)
     .body tr:last-child td { border-bottom: none; }
     .body tr:hover td { background: var(--offwhite); }
 
-    /* 画像サイズ制御 */
     .body img {
       max-width: 100% !important;
-      width: auto !important;
-      height: auto !important;
+      width: 100% !important;
+      height: 280px !important;
+      object-fit: cover !important;
       display: block !important;
       margin: 24px auto !important;
       border-radius: 8px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
-    .body figure {
-      margin: 24px 0;
-      text-align: center;
-    }
-    .body figcaption {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 8px;
-      font-style: italic;
-    }
+    .body figure { margin: 24px 0; text-align: center; }
+    .body figcaption { font-size: 12px; color: var(--muted); margin-top: 8px; font-style: italic; }
 
-    /* CTA */
     .cta { background: var(--navy); border-radius: 12px; padding: 32px 28px; text-align: center; margin-top: 48px; }
     .cta p { color: rgba(255,255,255,0.75); font-size: 15px; margin-bottom: 16px; }
     .cta-btn { display: inline-block; background: var(--red); color: #fff; font-weight: 700; font-size: 14px; padding: 12px 28px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; }
     .cta-btn:hover { opacity: 0.85; }
 
-    /* Related */
     .related { margin-top: 48px; padding-top: 32px; border-top: 1.5px solid var(--border); }
     .related h3 { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
     .related ul { list-style: none; padding: 0; }
@@ -119,7 +115,6 @@ const relatedPosts = Object.entries(allFiles)
     .related a { color: var(--navy); font-size: 15px; font-weight: 500; text-decoration: none; }
     .related a:hover { text-decoration: underline; }
 
-    /* Footer */
     .site-footer { background: var(--navy); color: rgba(255,255,255,0.45); text-align: center; padding: 24px 20px; font-size: 12px; letter-spacing: 0.3px; }
     .site-footer a { color: rgba(255,255,255,0.55); text-decoration: none; margin: 0 10px; }
     .site-footer a:hover { color: #fff; }
@@ -128,7 +123,10 @@ const relatedPosts = Object.entries(allFiles)
     @media (max-width: 600px) {
       .site-header { height: 56px; padding: 0 16px; }
       .tagline-wrap { display: none; }
-      .page-wrap { padding: 28px 16px 60px; }
+      .page-wrap { padding: 24px 16px 60px; }
+      .cover-wrap { padding: 20px 16px 0; }
+      .cover-wrap img { height: 200px; }
+      .body img { height: 200px !important; }
     }
   </style>
 </head>
@@ -164,6 +162,15 @@ const relatedPosts = Object.entries(allFiles)
     <a href="https://www.voyageflights.com" class="back-btn">← Back to search</a>
   </div>
 </header>
+
+{frontmatter.cover_image && (
+  <div class="cover-wrap">
+    <img src={frontmatter.cover_image} alt={frontmatter.cover_image_alt ?? frontmatter.title} />
+    {frontmatter.cover_image_credit && (
+      <p class="cover-credit">{frontmatter.cover_image_credit}</p>
+    )}
+  </div>
+)}
 
 <main class="page-wrap">
   <nav class="breadcrumb">
@@ -215,12 +222,11 @@ const relatedPosts = Object.entries(allFiles)
 </footer>
 
 <script>
-  // Markdownのインラインスタイルを上書き（画像サイズ強制制御）
   document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.body img').forEach(function(img) {
-      img.style.setProperty('max-width', '100%', 'important');
-      img.style.setProperty('width', 'auto', 'important');
-      img.style.setProperty('height', 'auto', 'important');
+      img.style.setProperty('width', '100%', 'important');
+      img.style.setProperty('height', '280px', 'important');
+      img.style.setProperty('object-fit', 'cover', 'important');
     });
   });
 </script>
