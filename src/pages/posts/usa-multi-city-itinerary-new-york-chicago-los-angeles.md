@@ -5,9 +5,9 @@ date: "July 2026"
 description: "A coast-to-coast multi-city itinerary combining New York, Chicago, and Los Angeles — three of America's most distinct cities, with practical routing, timing, and booking advice."
 tag: "Destination Guide"
 slug: "usa-multi-city-itinerary-new-york-chicago-los-angeles"
-cover_image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1200&auto=format&fit=crop"
-cover_image_alt: "New York City skyline with the Empire State Building at dusk"
-cover_image_credit: "Photo by Luca Bravo on Unsplash"
+cover_image: "/images/blog/new-york-times-square.jpg"
+cover_image_alt: "Times Square in New York City lit up with billboards at dusk"
+cover_image_credit: "Photo by James Ting on Unsplash"
 ---
 
 # USA Multi-City Itinerary: New York, Chicago, Los Angeles

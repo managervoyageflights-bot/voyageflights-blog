@@ -3,7 +3,7 @@ layout: ../../layouts/BlogPost.astro
 title: "Top Multi-City Itineraries from London"
 date: "June 2026"
 description: "London is one of the world's best-connected cities. Here are the top multi-city flight itineraries from London — with routes, timings, and practical tips for every travel style."
-tag: "Guide"
+tag: "Destination Guide"
 slug: "top-multi-city-itineraries-from-london"
 cover_image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200&auto=format&fit=crop"
 cover_image_alt: "London skyline with Tower Bridge at dusk"
