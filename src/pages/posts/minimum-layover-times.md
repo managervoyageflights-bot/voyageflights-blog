@@ -5,9 +5,9 @@ date: "June 2026"
 description: "How much time do you actually need between connecting flights? A practical guide to minimum layover times at major airports worldwide, with tips for staying on the safe side."
 tag: "Guide"
 slug: "minimum-layover-times"
-cover_image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&auto=format&fit=crop"
-cover_image_alt: "Passengers walking through a busy airport terminal corridor"
-cover_image_credit: "Photo by Marcus Loke on Unsplash"
+cover_image: "/images/blog/airport-departure-board.jpg"
+cover_image_alt: "Airport departures board showing flight times and gates"
+cover_image_credit: "Photo by Daniel Schludi on Unsplash"
 ---
 
 # Minimum Layover Times at the World's Busiest Airports
