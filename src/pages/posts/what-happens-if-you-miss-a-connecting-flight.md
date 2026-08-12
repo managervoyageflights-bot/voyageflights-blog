@@ -3,7 +3,7 @@ layout: ../../layouts/BlogPost.astro
 title: "What Happens If You Miss a Connecting Flight?"
 date: "August 2026"
 description: "Missed your connection? Here's exactly what happens next, why it depends entirely on how your flights were booked, and the steps to take immediately."
-tag: "Guide"
+tag: "Connection Guide"
 slug: "what-happens-if-you-miss-a-connecting-flight"
 cover_image: "/images/blog/jfk-airtrain-terminal.jpg"
 cover_image_alt: "AirTrain connecting terminals at JFK Airport with parking and city skyline in background"

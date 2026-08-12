@@ -3,7 +3,7 @@ layout: ../../layouts/BlogPost.astro
 title: "How Long Should a Layover Be for an International Flight?"
 date: "July 2026"
 description: "A quick, direct answer to how long your international layover should be, plus the specific factors that push that number up or down."
-tag: "Guide"
+tag: "Connection Guide"
 slug: "how-long-should-a-layover-be-for-international-flight"
 cover_image: "/images/blog/jfk-airtrain-terminal.jpg"
 cover_image_alt: "AirTrain connecting terminals at JFK Airport with parking and city skyline in background"

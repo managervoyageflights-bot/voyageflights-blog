@@ -3,7 +3,7 @@ layout: ../../layouts/BlogPost.astro
 title: "Self-Transfer vs Protected Connection: The Risks Explained"
 date: "July 2026"
 description: "Booking two separate flights can save money — but if you miss the connection, you're on your own. Here's exactly how self-transfer and protected connections differ, and how to decide which is right for your trip."
-tag: "Guide"
+tag: "Connection Guide"
 slug: "self-transfer-vs-protected-connection"
 cover_image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1200&auto=format&fit=crop"
 cover_image_alt: "Departure board showing flight times in an airport terminal"
