@@ -12,7 +12,7 @@ cover_image_credit: "Photo by Lavi Perchik on Unsplash"
 
 # How to Use Google Flights for Multi-City Trip Planning
 
-Google Flights is most people's default starting point for any flight search, and its multi-city mode — while a little less obvious than the standard round-trip search — is genuinely capable for building out a multi-destination itinerary. This guide walks through exactly how to use it, what its various tools actually show you, and a few things worth checking beyond what Google Flights surfaces by default.
+Google Flights is most people's default starting point for any flight search, and its multi-city mode — while a little less obvious than the standard round-trip search — is genuinely capable for building out a multi-destination itinerary. This guide walks through exactly how to use it, what its various tools actually show you, and a few things worth checking beyond what Google Flights surfaces by default. For a fuller reference covering where to find the feature and an honest look at its strengths and limits, see [Google Flights Multi City: The Complete Guide](/posts/google-flights-multi-city-complete-guide).
 
 ---
 
