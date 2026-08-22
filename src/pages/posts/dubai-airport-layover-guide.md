@@ -3,7 +3,7 @@ layout: ../../layouts/BlogPost.astro
 title: "Dubai Airport Layover Guide: Everything You Need to Know"
 date: "August 2026"
 description: "Connecting through Dubai International (DXB)? Here's a complete guide to layover times, terminals, transfers, and what to do with your time — whether you have 90 minutes or a full day."
-tag: "Connection Guide"
+tag: "Airport Guide"
 slug: "dubai-airport-layover-guide"
 cover_image: "/images/blog/dubai-burj-khalifa-downtown.jpg"
 cover_image_alt: "Burj Khalifa and the Downtown Dubai skyline seen from the waterfront"
