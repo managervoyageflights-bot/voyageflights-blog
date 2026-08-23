@@ -3,15 +3,34 @@ const { frontmatter } = Astro.props;
 
 // 全記事を自動取得（layoutsからsrc/pages/postsへのパス）
 const allFiles = import.meta.glob('/src/pages/posts/*.md', { eager: true });
-const relatedPosts = Object.entries(allFiles)
+const allPosts = Object.entries(allFiles)
   .map(([path, post]: [string, any]) => ({
     slug: path.replace('/src/pages/posts/', '').replace('.md', ''),
     title: (post as any).frontmatter?.title ?? '',
     tag: (post as any).frontmatter?.tag ?? '',
     date: (post as any).frontmatter?.date ?? '',
   }))
-  .filter(p => p.slug !== frontmatter.slug && p.title)
-  .slice(0, 3);
+  .filter(p => p.slug !== frontmatter.slug && p.title);
+
+// 同じslugを起点にした簡易シャッフル（記事ごとに毎回同じ並びになるが、記事間では違う並びになる）
+function seededShuffle<T>(arr: T[], seed: string): T[] {
+  let s = seed.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+  const rand = () => {
+    s = (s * 9301 + 49297) % 233280;
+    return s / 233280;
+  };
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+// 同じtagの記事を優先し、足りない分は他のtagの記事で埋める
+const sameTag = seededShuffle(allPosts.filter(p => p.tag && p.tag === frontmatter.tag), frontmatter.slug);
+const otherTag = seededShuffle(allPosts.filter(p => !p.tag || p.tag !== frontmatter.tag), frontmatter.slug);
+const relatedPosts = [...sameTag, ...otherTag].slice(0, 3);
 ---
 <!doctype html>
 <html lang="en">
