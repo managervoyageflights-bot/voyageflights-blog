@@ -6,7 +6,7 @@ tag: "Connection Guide"
 slug: "minimum-connection-times-major-airports"
 cover_image: "/images/blog/minimum-connection-times-cover.jpg"
 cover_image_alt: "Airport departure board showing connecting flights to Tokyo, Seoul, Singapore, Manila, and other destinations"
-cover_image_credit: "Photo by Ivan Lau on Unsplash — please verify photographer name/credit on Unsplash before publishing"
+cover_image_credit: "Photo by Ivan Lau on Unsplash"
 layout: ../../layouts/BlogPost.astro
 ---
 
